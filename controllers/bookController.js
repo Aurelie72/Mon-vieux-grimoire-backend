@@ -1,4 +1,4 @@
-const Book = require("../models/book");
+const Book = require("../models/bookModel");
 const fs = require("fs");
 
 // Récupérer tous les livres
@@ -103,4 +103,13 @@ exports.rateBook = (req, res, next) => {
         .catch((error) => res.status(400).json({ error }));
     })
     .catch((error) => res.status(404).json({ error }));
+};
+
+// top 3 des livres
+exports.getBestRating = (req, res, next) => {
+  Book.find()
+    .sort({ averageRating: -1 }) // tri décroissant
+    .limit(3) // top 3
+    .then((books) => res.status(200).json(books))
+    .catch((error) => res.status(400).json({ error }));
 };

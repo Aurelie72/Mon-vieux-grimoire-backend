@@ -34,10 +34,10 @@ app.get("/", (req, res) => {
   res.status(200).json({ message: "Votre serveur Express fonctionne !" });
 });
 
-const userRoutes = require("./routes/user");
+const userRoutes = require("./routes/userRoute");
 app.use("/api/auth", userRoutes);
 
-const bookRoutes = require("./routes/book");
+const bookRoutes = require("./routes/bookRoute");
 app.use("/api/books", bookRoutes);
 
 module.exports = app;

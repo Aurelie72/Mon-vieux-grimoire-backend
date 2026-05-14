@@ -4,16 +4,16 @@ const router = express.Router();
 const auth = require("../middleware/auth");
 const multer = require("../middleware/multer-config");
 
-const bookCtrl = require("../controllers/book");
+const bookCtrl = require("../controllers/bookController");
 
 // Récupérer tous les livres
 router.get("/", bookCtrl.getAllBooks);
 
+// le top 3 des livres
+router.get("/bestrating", bookCtrl.getBestRating);
+
 // Récupérer un livre par ID
 router.get("/:id", bookCtrl.getOneBook);
-
-// le top 3 des livres
-router.get("/:bestreating", bookCtrl.getBestRating);
 
 // Créer un livre (avec image)
 router.post("/", auth, multer, bookCtrl.createBook);
