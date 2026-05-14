@@ -1,3 +1,4 @@
+require("dotenv").config();
 const mongoose = require("mongoose");
 const express = require("express");
 const app = express();
@@ -6,15 +7,13 @@ const path = require("path");
 console.log(">>> APP.JS CHARGÉ DEPUIS :", __filename);
 
 mongoose
-  .connect(
-    "mongodb+srv://MonVieuxGrimoire2:MonVieux123@cluster0.b8qfgg4.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0",
-  )
+  .connect(process.env.MONGO_URI)
   .then(() => console.log("Connexion à MongoDB réussie !"))
   .catch((err) => console.log("ERREUR MONGODB :", err));
 
 app.use(express.json());
 
-// ⭐⭐ AJOUT DU CORS ⭐⭐
+// AJOUT DU CORS
 app.use((req, res, next) => {
   res.setHeader("Access-Control-Allow-Origin", "*");
   res.setHeader(
