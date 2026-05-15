@@ -3,6 +3,7 @@ const mongoose = require("mongoose");
 const express = require("express");
 const app = express();
 const path = require("path");
+const helmet = require("helmet");
 
 console.log(">>> APP.JS CHARGÉ DEPUIS :", __filename);
 
@@ -12,6 +13,7 @@ mongoose
   .catch((err) => console.log("ERREUR MONGODB :", err));
 
 app.use(express.json());
+app.use(helmet());
 
 // AJOUT DU CORS
 app.use((req, res, next) => {
