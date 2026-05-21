@@ -14,7 +14,14 @@ mongoose
   .catch((err) => console.log("ERREUR MONGODB :", err));
 
 app.use(express.json());
-app.use(helmet());
+
+app.use(
+  helmet({
+    crossOriginResourcePolicy: false,
+    crossOriginEmbedderPolicy: false,
+    crossOriginOpenerPolicy: false,
+  }),
+);
 
 const loginLimiter = rateLimit({
   windowMs: 15 * 60 * 1000,

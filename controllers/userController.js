@@ -1,9 +1,16 @@
 const bcrypt = require("bcrypt");
 const User = require("../models/userModel");
 const jwt = require("jsonwebtoken");
+const passwordSchema = require("../models/passwordModel");
 
 // Inscription
 exports.signup = (req, res, next) => {
+  if (!passwordSchema.validate(req.body.password)) {
+    return res.status(400).json({
+      message:
+        "Mot de passe trop faible. Il doit contenir 8 caractères, une majuscule, une minuscule, un chiffre et un symbole.",
+    });
+  }
   bcrypt
     .hash(req.body.password, 10)
     .then((hash) => {
