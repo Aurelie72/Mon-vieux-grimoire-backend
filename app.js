@@ -4,7 +4,6 @@ const express = require("express");
 const app = express();
 const path = require("path");
 const helmet = require("helmet");
-const rateLimit = require("express-rate-limit");
 
 console.log(">>> APP.JS CHARGÉ DEPUIS :", __filename);
 
@@ -22,13 +21,6 @@ app.use(
     crossOriginOpenerPolicy: false,
   }),
 );
-
-const loginLimiter = rateLimit({
-  windowMs: 15 * 60 * 1000,
-  max: 5,
-  message: "Trop de tentatives de connexion. Réessayez plus tard.",
-});
-app.use("/api/auth/login", loginLimiter);
 
 // AJOUT DU CORS
 app.use((req, res, next) => {
