@@ -1,0 +1,8 @@
+API backend permettant la gestion des livres, des utilisateurs et des notations pour la plateforme Mon Vieux Grimoire.
+Développée avec Node.js, Express, MongoDB, et sécurisée avec JWT, bcrypt, Helmet et Rate Limit.
+
+lancement du back-end : npm run dev
+lancement du front-end : npm start
+
+Auteur
+Aurélie 2026

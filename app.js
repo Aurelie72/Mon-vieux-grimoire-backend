@@ -7,6 +7,14 @@ const helmet = require("helmet");
 
 console.log(">>> APP.JS CHARGÉ DEPUIS :", __filename);
 
+// ****
+const dns = require("dns");
+
+dns.setServers(["8.8.8.8", "8.8.4.4"]);
+
+console.log("DNS Node :", dns.getServers());
+// ****
+
 mongoose
   .connect(process.env.MONGO_URI)
   .then(() => console.log("Connexion à MongoDB réussie !"))

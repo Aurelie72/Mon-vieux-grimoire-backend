@@ -1,7 +1,7 @@
 const bcrypt = require("bcrypt");
 const User = require("../models/userModel");
 const jwt = require("jsonwebtoken");
-const passwordSchema = require("../models/passwordModel");
+const passwordSchema = require("../services/passwordSchemaService");
 
 // Inscription
 exports.signup = (req, res, next) => {
