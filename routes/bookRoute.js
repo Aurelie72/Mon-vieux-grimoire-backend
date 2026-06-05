@@ -18,11 +18,12 @@ router.get("/:id", bookCtrl.getOneBook);
 // Créer un livre (avec image)
 router.post("/", auth, multer, bookCtrl.createBook);
 
-// Modifier un livre (avec ou sans nouvelle image)
+// Modifier un livre
 router.put("/:id", auth, multer, bookCtrl.modifyBook);
 
 // Supprimer un livre (et son image)
 router.delete("/:id", auth, bookCtrl.deleteBook);
+
 // noter un livre
 router.post("/:id/rating", auth, bookCtrl.rateBook);
 

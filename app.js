@@ -9,9 +9,7 @@ console.log(">>> APP.JS CHARGÉ DEPUIS :", __filename);
 
 // ****
 const dns = require("dns");
-
 dns.setServers(["8.8.8.8", "8.8.4.4"]);
-
 console.log("DNS Node :", dns.getServers());
 // ****
 
@@ -30,7 +28,7 @@ app.use(
   }),
 );
 
-// AJOUT DU CORS
+//  CORS
 app.use((req, res, next) => {
   res.setHeader("Access-Control-Allow-Origin", "*");
   res.setHeader(
