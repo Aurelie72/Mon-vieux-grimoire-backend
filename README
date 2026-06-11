@@ -3,7 +3,12 @@ Développée avec Node.js, Express, MongoDB, et sécurisée avec JWT, bcrypt, He
 
 Node.js est l’environnement d’exécution JavaScript utilisé pour faire tourner le backend.
 
-Express est un framework minimaliste pour Node.js qui simplifie la création d’un serveur HTTP et d’une API RESTful.
+Express est le framework minimaliste pour Node.js
+
+Base de données :
+Hébergée sur MongoDB Atlas
+Connexion sécurisée via MONGO_URI
+Modèles Mongoose : User, Book
 
 Installation :
 Cloner le projet
@@ -14,11 +19,6 @@ JWT_SECRET=...
 
 lancement du back-end : npm run dev
 lancement du front-end : npm start
-
-Base de données :
-Hébergée sur MongoDB Atlas
-Connexion sécurisée via MONGO_URI
-Modèles Mongoose : User, Book
 
 Structure du projet :
 backend/
