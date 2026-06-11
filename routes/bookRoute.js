@@ -6,25 +6,18 @@ const multer = require("../middleware/multer-config");
 
 const bookCtrl = require("../controllers/bookController");
 
-// Récupérer tous les livres
 router.get("/", bookCtrl.getAllBooks);
 
-// le top 3 des livres
 router.get("/bestrating", bookCtrl.getBestRating);
 
-// Récupérer un livre par ID
 router.get("/:id", bookCtrl.getOneBook);
 
-// Créer un livre (avec image)
 router.post("/", auth, multer, bookCtrl.createBook);
 
-// Modifier un livre
 router.put("/:id", auth, multer, bookCtrl.modifyBook);
 
-// Supprimer un livre (et son image)
 router.delete("/:id", auth, bookCtrl.deleteBook);
 
-// noter un livre
 router.post("/:id/rating", auth, bookCtrl.rateBook);
 
 module.exports = router;

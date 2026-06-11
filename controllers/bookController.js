@@ -1,21 +1,18 @@
 const Book = require("../models/bookModel");
 const fs = require("fs");
 
-// Récupérer tous les livres
 exports.getAllBooks = (req, res, next) => {
   Book.find()
     .then((books) => res.status(200).json(books))
     .catch((error) => res.status(400).json({ error }));
 };
 
-// Récupérer un livre par ID
 exports.getOneBook = (req, res, next) => {
   Book.findOne({ _id: req.params.id })
     .then((book) => res.status(200).json(book))
     .catch((error) => res.status(404).json({ error }));
 };
 
-// Créer un livre
 exports.createBook = (req, res, next) => {
   const bookObject = JSON.parse(req.body.book);
   delete bookObject._id;
@@ -33,7 +30,6 @@ exports.createBook = (req, res, next) => {
     .catch((error) => res.status(400).json({ error }));
 };
 
-// Modifier un livre
 exports.modifyBook = (req, res, next) => {
   const bookObject = req.file
     ? {
@@ -60,7 +56,6 @@ exports.modifyBook = (req, res, next) => {
     .catch((error) => res.status(400).json({ error }));
 };
 
-// Supprimer un livre
 exports.deleteBook = (req, res, next) => {
   Book.findOne({ _id: req.params.id })
     .then((book) => {
@@ -78,7 +73,6 @@ exports.deleteBook = (req, res, next) => {
     .catch((error) => res.status(500).json({ error }));
 };
 
-// Ajouter une note
 exports.rateBook = (req, res, next) => {
   const userId = req.auth.userId;
   const grade = req.body.rating;
@@ -105,7 +99,6 @@ exports.rateBook = (req, res, next) => {
     .catch((error) => res.status(404).json({ error }));
 };
 
-// top 3 des livres
 exports.getBestRating = (req, res, next) => {
   Book.find()
     .sort({ averageRating: -1 })
