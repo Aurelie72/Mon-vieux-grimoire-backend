@@ -1,8 +1,68 @@
 API backend permettant la gestion des livres, des utilisateurs et des notations pour la plateforme Mon Vieux Grimoire.
 Développée avec Node.js, Express, MongoDB, et sécurisée avec JWT, bcrypt, Helmet et Rate Limit.
 
+Node.js est l’environnement d’exécution JavaScript utilisé pour faire tourner le backend.
+
+Express est un framework minimaliste pour Node.js qui simplifie la création d’un serveur HTTP et d’une API RESTful.
+
+Installation :
+Cloner le projet
+Installer les dépendances : npm install
+Créer un fichier .env :
+MONGO_URI=...
+JWT_SECRET=...
+
 lancement du back-end : npm run dev
 lancement du front-end : npm start
+
+Base de données :
+Hébergée sur MongoDB Atlas
+Connexion sécurisée via MONGO_URI
+Modèles Mongoose : User, Book
+
+Structure du projet :
+backend/
+
+- controllers/
+- middleware/
+- models/
+- routes/
+- images/
+- services/
+- app.js
+- server.js
+- .env
+
+Middlewares utilisés :
+express.json() → parsing JSON
+helmet() → sécurisation des headers
+multer → upload des images
+sharp → optimisation des images
+auth → vérification du token JWT
+rate-limit → limitation des tentatives de login
+
+Endpoints :
+Auth
+POST /api/auth/signup
+POST /api/auth/login
+
+Books
+GET /api/books
+GET /api/books/:id
+POST /api/books
+PUT /api/books/:id
+DELETE /api/books/:id
+POST /api/books/:id/rating
+POST /api/books/bestrating
+
+Sécurité :
+Hashage des mots de passe (bcrypt)
+Authentification JWT
+Protection des headers (Helmet)
+Limitation des tentatives de connexion (Rate Limit)
+Variables sensibles dans .env
+Connexion MongoDB non bloquante
+PasswordSchema pour complexité du mot de passe
 
 Auteur
 Aurélie 2026
